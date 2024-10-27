@@ -9,12 +9,13 @@ This pipeline performs variant calling using Strelka, FreeBayes, and VarScan, wi
 
 ## Important Notes
 
-1. You can either start this pipeline from the beginning using the repository where Fastq files are automatically converted to VCF files, or you can proceed by using an existing VCF file.
-   
-2. If you're using an existing VCF file, you must duplicate the file and rename one as `normal_haplotypeCaller_recalibrated_SNPs_INDELs.vcf.gz`.
+If you want to start with a BAM file, since the final step of the pipeline automatically takes a consensus of the output from the four variant calling modules, use the following trick:
 
-3. The input file for this pipeline should be a BAM file named:  
-   `normal_BWA_Alignment_Quality_Score_Recalibrated.bam`.
+After the first module of variant calling is completed, take a copy of the VCF file and rename it to normal_haplotypeCaller_recalibrated_SNPs_INDELs.vcf.gz, and be sure to generate its index.
+
+However, for optimal results, it’s recommended to start with Fastq files. You can follow the instructions in this repository for a full Fastq to VCF pipeline:
+
+https://github.com/Cosmos9526/Automated-Fastq-to-VCF-Pipeline
 
 ## Docker Image
 
@@ -70,4 +71,8 @@ The `run2.py` script will handle running the Docker container, processing the in
 ## Final Note
 
 In the final step of the pipeline, a consensus is taken from the results of all four variant callers (Strelka, FreeBayes, VarScan, and GATK), ensuring comprehensive variant identification.
+
+## contact info
+Milad Bagheri milad9dxb@gmail.com
+
 
